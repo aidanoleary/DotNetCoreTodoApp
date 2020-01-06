@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import List from '@material-ui/core/List';
 import TodoService from '../../services/TodoService';
 
 export default class TodoList extends Component {
@@ -43,14 +44,21 @@ export default class TodoList extends Component {
   }
 
   _renderTodoItems = () => {
-    return this.state.todoItems.map((item, index) => (
+    let todoItemsJsx = this.state.todoItems.map((item, index) => (
       <TodoItem
         key={item.id}
         title={item.title}
         description={item.description}
         onDeleteItem={() => this._onDeleteItem(item.id)}
+        onCheckItem={() => this._onCheckItem(item.id)}
       />
-    ))
+    ));
+
+    return (
+      <List>
+        {todoItemsJsx}
+      </List>
+    );
   };
 
   _onEditTodo = (id, newTitle, newDescription) => {
@@ -83,6 +91,10 @@ export default class TodoList extends Component {
       todoItems: this.state.todoItems
     })
   };
+
+  _onCheckItem = (id) => {
+    console.log("Item " + id + " was checked");
+  }
 
   _onChangeTitle = (event) => {
     this.setState({
