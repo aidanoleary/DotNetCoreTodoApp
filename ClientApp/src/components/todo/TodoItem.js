@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const TodoItem = (props) => {
 
@@ -13,23 +14,14 @@ const TodoItem = (props) => {
     <ListItem>
       <ListItemText primary={props.title} />
       <Checkbox onChange={props.onCheckItem} />
-      <Button variant="contained" color="primary" onClick={props.onDeleteItem}>
+      <Button
+        variant="contained"
+        color="secondary"
+        startIcon={<DeleteIcon />}
+        onClick={props.onDeleteItem}>
         Delete
       </Button>
     </ListItem>
-    // <Grid container spacing={3}>
-    //   <Grid item xs={4}>
-    //     <h1>{props.title}</h1>
-    //   </Grid>
-    //   <Grid item xs={4}>
-    //     <p>{props.description}</p>
-    //   </Grid>
-    //   <Grid item xs={4}>
-    //     <Button variant="contained" color="primary" onClick={props.onDeleteItem}>
-    //       Delete
-    //     </Button>
-    //   </Grid>
-    // </Grid>
   );
 };
 

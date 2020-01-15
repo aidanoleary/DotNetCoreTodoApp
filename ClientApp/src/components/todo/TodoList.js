@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '@material-ui/core/List';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
 import TodoService from '../../services/TodoService';
 
 export default class TodoList extends Component {
@@ -142,7 +145,7 @@ export default class TodoList extends Component {
   render() {
     const { loading } = this.state;
     return (
-      <Container maxWidth="md">
+      <div maxWidth="md">
         {loading ? this._renderLoadingSpinner() : this._renderTodoItems()}
         <form noValidate autoComplete="off">
           <TextField
@@ -158,18 +161,18 @@ export default class TodoList extends Component {
             margin="normal"
             id="todo-description-textfield"
             label="Description"
-            multiline rows="4"
+            multiline rows="2"
             onChange={this._onChangeDescription}
             value={this.state.formTodoInfo.description}
           />
-          <Button
-            variant="contained"
+          <Fab
             color="primary"
+            aria-label="add"
             onClick={this._onAddItem}>
-            Add Todo Item
-          </Button>
+            <AddIcon />
+          </Fab>
         </form>
-      </Container>
+      </div>
     );
   }
 }
