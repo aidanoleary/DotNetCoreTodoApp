@@ -31,7 +31,9 @@ export function NavMenu() {
             <Typography variant="h6" className={classes.title}>
               Todo Application
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit" href="/sign-in">
+              Login
+            </Button>
             <Button color="inherit" href="/profile">
               Profile
             </Button>
